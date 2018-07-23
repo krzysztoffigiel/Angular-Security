@@ -8,13 +8,15 @@ import { routesConfig } from './routes.config';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { BooksComponent } from './books/books.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    BooksComponent
+    BooksComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
