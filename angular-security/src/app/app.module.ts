@@ -15,6 +15,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksService } from './services/books.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { BooksService } from './services/books.service';
     MatIconModule,
     NgbModule
   ],
-  providers: [BooksService],
+  providers: [BooksService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
