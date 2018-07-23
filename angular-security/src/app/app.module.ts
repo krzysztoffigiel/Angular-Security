@@ -1,3 +1,4 @@
+
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,8 +16,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksService } from './services/books.service';
-import { AuthService } from './services/auth.service';
 
+import { map, switchMap, shareReplay } from 'rxjs/operators';
+
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [

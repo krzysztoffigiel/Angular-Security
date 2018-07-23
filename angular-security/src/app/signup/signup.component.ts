@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../node_modules/@angular/forms';
 
@@ -10,7 +11,7 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -21,7 +22,12 @@ export class SignupComponent implements OnInit {
   signUp() {
     const val = this.signupForm.value;
     console.log(val);
-    //TODO: signup method implementation
+    
+    if(val.email && val.password && val.password === val.confirm) {
+      this.authService.signUp(val.email, val.password).subscribe(() => {
+        console.log("User was created"), console.error();
+      });
+    }
 
   }
 

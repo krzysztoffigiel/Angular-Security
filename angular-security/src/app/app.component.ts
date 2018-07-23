@@ -11,7 +11,6 @@ import { User } from './models/user.model';
 })
 export class AppComponent implements OnInit {
 
-  //user$: Observable<User>;
   isLoggedIn$: Observable<boolean>;
   isLoggedOut$: Observable<boolean>;
 
