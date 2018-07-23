@@ -37,7 +37,7 @@ import { AuthService } from './services/auth.service';
     NoopAnimationsModule,
     MatMenuModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [BooksService, AuthService],
   bootstrap: [AppComponent]
