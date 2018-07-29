@@ -1,28 +1,39 @@
-<form autocomplete="off" novalidate  [formGroup]="signupForm">
-
-  <fieldset>
-      <legend>Sign Up</legend>
-
-      <div class="form-field">
-          <label>Email:</label>
-          <input name="email" formControlName="email">
-      </div>
-      <div class="form-field">
-          <label>Password:</label>
-          <input name="password" formControlName="password" type="password">
-      </div>
-      <div class="form-field">
-          <label>Confirm:</label>
-          <input name="confirm" formControlName="confirm" type="password">
-      </div>
-  </fieldset>
-
-  <div class="form-buttons">
-
-      <button  class="button button-primary" (click)="signUp()">Sign Up</button>
-
-  </div>
-
-
-
-</form>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-black mb-4">ANGULAR SECURITY</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">
+                                <i class="fas fa-users"></i>&nbsp;Sign Up
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" autocomplete="off" novalidate="" [formGroup]="signupForm" method="POST">
+                                <div class="form-group">
+                                    <label for="email"><i class="fas fa-envelope"></i>&nbsp;e-mail:</label>
+                                    <input class="form-control form-control-lg rounded-0" name="email" formControlName="email">
+                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password"><i class="fas fa-unlock-alt"></i>&nbsp;password:</label>
+                                    <input class="form-control form-control-lg rounded-0" type="password" name="password" formControlName="password">
+                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm"><i class="fas fa-check-double"></i>&nbsp;confirm password:</label>
+                                    <input class="form-control form-control-lg rounded-0" type="password" name="confirm" formControlName="confirm">
+                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <button class="btn btn-success btn-lg float-right" type="submit" (click)="signUp()">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
