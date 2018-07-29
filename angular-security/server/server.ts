@@ -1,13 +1,14 @@
-import * as express from 'express';
 import { Application } from 'express';
+import * as express from 'express';
 import * as fs from 'fs';
 import * as https from 'https';
-import { readAllBooks } from './read-all-books.route';
 import * as _ from 'lodash';
-
+import { readAllBooks } from './read-all-books.route';
+import { createUser } from './create-user.route';
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+var path = require('path');
 const app: Application = express();
 
 app.use(cookieParser());
@@ -23,13 +24,17 @@ const options = commandLineArgs(optionDefinitions);
 
 // REST API
 
-app.route('/api/books').get(readAllBooks);
+app.route('/api/books')
+    .get(readAllBooks);
+
+app.route('/api/signup')
+    .post(createUser);
 
 if (options.secure) {
 
     const httpsServer = https.createServer({
-        key: fs.readFileSync('key.pem'),
-        cert: fs.readFileSync('cert.pem')
+        key: fs.readFileSync(path.resolve('key.pem')),
+        cert: fs.readFileSync(path.resolve('cert.pem'))
     }, app);
 
     // launch an HTTPS Server. Note: this does NOT mean that the application is secure
