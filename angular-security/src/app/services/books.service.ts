@@ -6,11 +6,11 @@ import { HttpClient } from "@angular/common/http";
 export class BooksService {
     constructor(private http: HttpClient) {}
 
-    loadAllLessons() {
+    loadAllBooks() {
         return this.http.get<Books[]>('/api/books');
     }
 
-    findLessonById(id:number) {
+    findBookById(id:number) {
         return this.http.get<Books>('/api/books/' + id);
     }
 }
