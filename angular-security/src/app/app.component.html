@@ -7,10 +7,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/books">Books</a>
-        <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/signup">Signup</a>
-        <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/login">Login</a>
-        <a *ngIf="isLoggedIn$ | async" class="nav-item nav-link">Logout</a>
+      <a class="nav-item nav-link" routerLink="/books">Books</a>
+      <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/signup">Signup</a>
+      <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/login">Login</a>
+      <a *ngIf="isLoggedIn$ | async" class="nav-item nav-link">Logout</a>
     </div>
   </div>
 </nav>
