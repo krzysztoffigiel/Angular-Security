@@ -1,9 +1,17 @@
 body {
     background-color: gray;
+    font-family: 'Raleway', sans-serif;
 }
 .navbar {
     background-color: aquamarine !important;
 }
 .navbar-brand {
     font-weight: bold !important;   
+}
+.navbar-nav {
+    height: 40px;
+}
+.nav-item:hover {
+    font-weight: bold;
+    border-bottom: 2px double black;
 }
