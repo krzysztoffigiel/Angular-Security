@@ -1,0 +1,16 @@
+label {
+    text-align: left !important;
+    width: 100% !important;
+}
+form {
+    width: 100% !important;
+}
+.title {
+    color: whitesmoke;
+    font-size: 40px;
+}
+.title-span {
+    color: aquamarine;
+}
+
+
