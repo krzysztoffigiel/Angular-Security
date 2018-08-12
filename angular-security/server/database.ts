@@ -10,7 +10,7 @@ class InMemoryDatabase {
         return _.values(BOOKS);
     }
 
-    createUser(email: string, password: string) {
+    createUser(email: string, passwordDigest: string) {
 
         this.userCounter++;
         
@@ -19,7 +19,7 @@ class InMemoryDatabase {
         const user: DbUser = {
             id, 
             email,
-            password
+            passwordDigest
         };
 
         USERS[id] = user;
