@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../node_modules/@angular/forms';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -19,11 +20,11 @@ export class SignupComponent implements OnInit {
     digits: 'Password must have at least one digit character'
   };
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signupForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirm: ['', Validators.required]
+      email: ['test@gmail.com', Validators.required],
+      password: ['Password10', Validators.required],
+      confirm: ['Password10', Validators.required]
     });
   }
 
@@ -34,8 +35,8 @@ export class SignupComponent implements OnInit {
     if(val.email && val.password && val.password === val.confirm) {
 
       this.authService.signUp(val.email, val.password).subscribe(() => {
-        console.log("User was created")
-        //response => this.errors = response.error.errors
+        this.router.navigateByUrl('/');
+        console.log("User was created successfully")
       }, err => {
         this.errors = err.error.errors
       });
