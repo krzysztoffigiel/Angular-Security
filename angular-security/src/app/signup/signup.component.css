@@ -6,11 +6,23 @@ form {
     width: 100% !important;
 }
 .title {
-    color: whitesmoke;
     font-size: 40px;
 }
 .title-span {
     color: aquamarine;
+    background-color: black;
+    padding: 5px;
+}
+.title-span-2 {
+    color: black;
+    background-color: white;
+    padding: 5px 5px 5px 0; 
+}
+.angular-span{
+    color: #b52e31;
+    background-color: white;
+    padding: 5px 0 5px 5px;
+    font-weight: bold;
 }
 
 

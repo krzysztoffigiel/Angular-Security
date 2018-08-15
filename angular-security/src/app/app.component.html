@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Angular Security</a>
+  <a class="navbar-brand" href="#">Angular $ecurity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
       <a class="nav-item nav-link" routerLink="/books">Books</a>
       <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/signup">Signup</a>
       <a *ngIf="isLoggedOut$ | async" class="nav-item nav-link" routerLink="/login">Login</a>
-      <a *ngIf="isLoggedIn$ | async" class="nav-item nav-link">Logout</a>
+      <a *ngIf="isLoggedIn$ | async" (click)="logout()" class="nav-item nav-link" >Logout</a>
     </div>
   </div>
 </nav>

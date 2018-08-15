@@ -1,7 +1,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col col-12">
-            <div class="books-list-container v-h-center-block-parent">
+            <div class="books-list-container">
                 <table class="table books-list card card-strong">
                     <tbody>
                         <tr *ngFor="let book of books$ | async" [routerLink]="['/books', book.id]">
