@@ -17,7 +17,8 @@ export class SignupComponent implements OnInit {
   errorCodesMessages = {
     min: 'Minimum length of the password is 10 characters',
     uppercase: 'Password must have at least one upper case character',
-    digits: 'Password must have at least one digit character'
+    digits: 'Password must have at least one digit character',
+    "err_user": 'Could not create user'
   };
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -36,10 +37,10 @@ export class SignupComponent implements OnInit {
 
       this.authService.signUp(val.email, val.password).subscribe(() => {
         this.router.navigateByUrl('/');
-        console.log("User was created successfully")
-      }, err => {
-        this.errors = err.error.errors
-      });
+        console.log("User was created successfully")},
+        response => this.errors = response.error.errors
+        // console.log("User was created successfully")
+      );
       
     }
 

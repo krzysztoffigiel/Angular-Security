@@ -13,23 +13,28 @@ export function createUser(req: Request, res: Response) {
     if (errors.length > 0) {
         res.status(400).json({ errors });
     } else {
-        createUserAndSession(res, credentials);
+        argon2.hash(credentials.password).then(passwordDigest => {
+            const user = db.createUser(credentials.email, passwordDigest);
+            console.log("USERS: ", USERS);
+            res.status(200).json({id: user.id, email: user.email});
+        });
+        // createUserAndSession(res, credentials);
     }
 
     // tslint:disable-next-line:no-shadowed-variable
-    async function createUserAndSession(res: Response, credentials) {
-        // tslint:disable-next-line:no-shadowed-variable
-        const passwordDigest = await argon2.hash(credentials.password);
+    // async function createUserAndSession(res: Response, credentials) {
+    //     // tslint:disable-next-line:no-shadowed-variable
+    //     const passwordDigest = await argon2.hash(credentials.password);
 
-        const user = db.createUser(credentials.email, passwordDigest);
+    //     const user = db.createUser(credentials.email, passwordDigest);
 
-        const sessionToken = 1;
+    //     const sessionToken = 1;
 
-        res.cookie('SESSIONID', sessionToken, {httpOnly: true, secure: true});
+    //     res.cookie('SESSIONID', sessionToken, {httpOnly: true, secure: true});
 
-        res.status(200).json({id: user.id, email: user.email});
+    //     res.status(200).json({id: user.id, email: user.email});
 
-    }
+    // }
 
 
 

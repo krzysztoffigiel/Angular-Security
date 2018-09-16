@@ -18,13 +18,15 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.isLoggedOut$ = this.authService.isLoggedOut$;
+    
 
   }
 
   logout() {
-    this.authService.logout().subscribe();
+    // this.authService.logout().subscribe();
   }
 
 }
