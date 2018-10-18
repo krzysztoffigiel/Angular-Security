@@ -13,7 +13,7 @@
                     <tbody>
                         <tr *ngFor="let book of books$ | async" [routerLink]="['/books', book.id]">
                             <th >{{book.id}}</th>
-                            <td class="book-description">{{book.description}}</td>
+                            <td class="book-description"><i>{{book.description}}</i></td>
                             <td class="book-price">{{book.price}}$</td>
                         </tr>
                     </tbody>
