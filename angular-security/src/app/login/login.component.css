@@ -18,5 +18,10 @@ form {
     background-color: white;
     padding: 5px; 
 }
-
+.login-btn {
+    background-color: aquamarine !important;
+}
+.login-btn:hover {
+    border: solid 2px black;
+}
 
