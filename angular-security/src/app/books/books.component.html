@@ -1,19 +1,24 @@
 <div class="container py-5">
     <div class="row">
         <div class="col col-12">
-            <div class="books-list-container">
-                <table class="table books-list card card-strong">
+            <!-- <div class="books-list-container"> -->
+                <table class="table card card-strong">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 69%">Book name</th>
+                            <th style="width: 10%">Book price</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr *ngFor="let book of books$ | async" [routerLink]="['/books', book.id]">
-                            <td class="book-title"> {{book.description}} </td>
-                            <td class="duration">
-                                <i class="md-icon duration-icon">access_time</i>
-                                <span>{{book.duration}}</span>
-                            </td>
+                            <th >{{book.id}}</th>
+                            <td class="book-description">{{book.description}}</td>
+                            <td class="book-price">{{book.price}}$</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>

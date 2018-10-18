@@ -1,4 +1,7 @@
 
-tr {
+td {
     width: 100% !important;
+}
+.book-description {
+    white-space: normal !important;
 }

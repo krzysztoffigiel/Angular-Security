@@ -3,7 +3,5 @@ export interface Books {
     description: string;
     longDescription: string;
     tags: string;
-    duration: string;
-    url: string;
-    videoUrl: string;
+    price: string;
 }
