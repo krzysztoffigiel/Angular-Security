@@ -10,14 +10,17 @@ class InMemoryDatabase {
         return _.values(BOOKS);
     }
 
-    findUserByEmail(email:string) :DbUser {
+    findUserByEmail(email: string): DbUser {
+
+        console.log('Finding user by email:', email);
 
         const users = _.values(USERS);
 
         return _.find(users, user => user.email === email);
+
     }
 
-    findUserById(userId:string) :DbUser {
+    findUserById(userId: string): DbUser {
 
         let user = undefined;
 
@@ -38,20 +41,20 @@ class InMemoryDatabase {
 
     createUser(email: string, passwordDigest: string) {
 
-        const usersPerEmail = _.keyBy(_.values(USERS), "email");
+        const usersPerEmail = _.keyBy(_.values(USERS), 'email');
 
-        if(usersPerEmail[email]) {
-            const message = "User already exists with assigned email address: " + email;
+        if (usersPerEmail[email]) {
+            const message = 'User already exists with assigned email address: ' + email;
             console.error(message);
             throw new Error(message);
         }
 
         this.userCounter++;
-        
+
         const id = this.userCounter++;
 
         const user: DbUser = {
-            id, 
+            id,
             email,
             passwordDigest
         };

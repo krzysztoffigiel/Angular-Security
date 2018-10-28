@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
 
     if(val.email && val.password) {
-      // this.authService.login(val.email, val.password).subscribe(() => {
-      //   console.log("User is logged in successfully");
-      //   this.router.navigateByUrl('/');
-      // }, err => {
-        
-      // });
+      this.authService.login(val.email, val.password).subscribe(() => {
+        console.log("User is logged in successfully");
+        this.router.navigateByUrl('/');
+      }, err => {
+        console.error('An error occured while logging in', err);
+      });
     }
   
   }

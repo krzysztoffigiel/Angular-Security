@@ -2,7 +2,7 @@
 import { User } from './../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, tap, filter } from "rxjs/operators";
 
 
@@ -11,23 +11,26 @@ export const ANONYMOUS_USER: User = {
   email: ''
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class AuthService {
 
-  private subject = new BehaviorSubject<User>(ANONYMOUS_USER);
+  private subject = new BehaviorSubject<User>(undefined);
 
-  user$: Observable<User> = this.subject.asObservable();
+  user$: Observable<User> = this.subject.asObservable().pipe(filter(user => !!user));
 
   isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
 
   isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
 
-  constructor(private http: HttpClient) { 
-    // http.get<User>('/api/user')
-    // .subscribe(user => this.subject.next(user ? user : ANONYMOUS_USER));
+  constructor(private http: HttpClient) {
+    console.log('Hello Auth Service')
+    http.get<User>('/api/user').subscribe(user => {
+      console.log('User: ', user);
+      this.subject.next(user ? user : ANONYMOUS_USER)
+    }, err => {
+      console.error('Cannot resolve path /api/user: ', err)
+    });
   }
 
   signUp(email: string, password: string) {
@@ -35,14 +38,14 @@ export class AuthService {
       .pipe(shareReplay(), tap(user => this.subject.next(user)));
   }
 
-  // login(email: string, password: string) {
-  //   return this.http.post<User>('/api/login', { email, password })
-  //     .pipe(shareReplay(), tap(user => this.subject.next(user)));
-  // }
+  login(email: string, password: string) {
+    return this.http.post<User>('/api/login', { email, password })
+      .pipe(shareReplay(), tap(user => this.subject.next(user)));
+  }
 
-  // logout(): Observable<any> {
-  //   return this.http.post('/api/logout', null)
-  //     .pipe(shareReplay(), tap(user => this.subject.next(ANONYMOUS_USER)));
-  // }
+  logout(): Observable<any> {
+    return this.http.post('/api/logout', null)
+      .pipe(shareReplay(), tap(user => this.subject.next(ANONYMOUS_USER)));
+  }
 
 }

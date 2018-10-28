@@ -2,12 +2,14 @@ import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../node_modules/@angular/forms';
 import { Router } from '../../../node_modules/@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css', '../commons/forms.css']
 })
+
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
@@ -21,7 +23,8 @@ export class SignupComponent implements OnInit {
     "err_user": 'Could not create user'
   };
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,
+    public snackBar: MatSnackBar) {
     this.signupForm = this.fb.group({
       email: ['test@gmail.com', Validators.required],
       password: ['Password10', Validators.required],
@@ -32,16 +35,19 @@ export class SignupComponent implements OnInit {
   signUp() {
     const val = this.signupForm.value;
     console.log(val);
-    
-    if(val.email && val.password && val.password === val.confirm) {
+
+    if (val.email && val.password && val.password === val.confirm) {
 
       this.authService.signUp(val.email, val.password).subscribe(() => {
         this.router.navigateByUrl('/');
-        console.log("User was created successfully")},
+        this.snackBar.open('User was successfully created', "Ok", {
+          duration: 3000
+        });
+        console.log("User was created successfully");
+      },
         response => this.errors = response.error.errors
-        // console.log("User was created successfully")
       );
-      
+
     }
 
   }

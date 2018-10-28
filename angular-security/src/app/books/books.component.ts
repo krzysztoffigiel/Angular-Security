@@ -1,5 +1,5 @@
 import { AuthService } from './../services/auth.service';
-import { Observable } from 'rxjs';
+import { of as observableOf, Observable } from 'rxjs';
 import { BooksService } from './../services/books.service';
 import { Component, OnInit } from '@angular/core';
 import { Books } from '../models/books.model';
@@ -18,8 +18,10 @@ export class BooksComponent implements OnInit {
   constructor(private booksService: BooksService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.books$ = this.booksService.loadAllBooks();
+    console.log('Hello Books Component')
+    this.books$ = this.booksService.loadAllBooks().pipe(catchError(err => observableOf([])));
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    console.log('isLoggedIn from BooksComponent: ', this.isLoggedIn$)
   }
 
 }

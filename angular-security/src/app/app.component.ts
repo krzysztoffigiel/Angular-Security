@@ -19,14 +19,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('Hello App Component')
+
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.isLoggedOut$ = this.authService.isLoggedOut$;
     
+    console.log('isLoggedIn: ', this.isLoggedIn$)
+    console.log('isLoggedOut: ', this.isLoggedOut$)
 
   }
 
   logout() {
-    // this.authService.logout().subscribe();
+    this.authService.logout().subscribe();
   }
 
 }

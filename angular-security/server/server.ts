@@ -8,10 +8,9 @@ import { createUser } from './create-user.route';
 import { getUser } from './get-user.route';
 import { logout } from './logout.route';
 import { login } from './login.route';
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-var path = require('path');
+
 const app: Application = express();
 
 app.use(cookieParser());
@@ -33,20 +32,20 @@ app.route('/api/books')
 app.route('/api/signup')
     .post(createUser);
 
-// app.route('api/user')
-//     .get(getUser);
+app.route('/api/user')
+    .get(getUser);
 
-// app.route('api/logout')
-//     .post(logout);
+app.route('/api/logout')
+    .post(logout);
 
-// app.route('api/login')
-//     .post(login);
+app.route('/api/login')
+    .post(login);
 
 if (options.secure) {
 
     const httpsServer = https.createServer({
-        key: fs.readFileSync(path.resolve('key.pem')),
-        cert: fs.readFileSync(path.resolve('cert.pem'))
+        key: fs.readFileSync('key.pem'),
+        cert: fs.readFileSync('cert.pem')
     }, app);
 
     // launch an HTTPS Server. Note: this does NOT mean that the application is secure

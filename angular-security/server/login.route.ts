@@ -31,8 +31,7 @@ async function loginAndBuildResponse(credentials: any, user: DbUser, res: Respon
 }
 
 async function attemptLogin(credentials: any, user: DbUser) {
-    const isPasswordValid = await argon2.verify(user.passwordDigest,
-        credentials.password);
+    const isPasswordValid = await argon2.verify(user.passwordDigest, credentials.password);
 
     if (!isPasswordValid) {
         throw new Error("Password Invalid");

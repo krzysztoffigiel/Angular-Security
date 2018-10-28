@@ -3,6 +3,8 @@ import { db } from './database';
 import { USERS } from './database-data';
 import * as argon2 from 'argon2';
 import { validatePassword } from './password-validation';
+import { randomBytes } from 'crypto';
+import { sessionStore } from './session.store';
 
 export function createUser(req: Request, res: Response) {
 
@@ -13,29 +15,34 @@ export function createUser(req: Request, res: Response) {
     if (errors.length > 0) {
         res.status(400).json({ errors });
     } else {
-        argon2.hash(credentials.password).then(passwordDigest => {
-            const user = db.createUser(credentials.email, passwordDigest);
-            console.log("USERS: ", USERS);
-            res.status(200).json({id: user.id, email: user.email});
-        });
-        // createUserAndSession(res, credentials);
+
+        if (errors.length > 0) {
+            res.status(400).json({ errors });
+        } else {
+            createUserAndSession(res, credentials).catch((err) => {
+                console.log('An error occured while new user creating', err);
+                res.sendStatus(500);
+            });
+        }
     }
+}
 
-    // tslint:disable-next-line:no-shadowed-variable
-    // async function createUserAndSession(res: Response, credentials) {
-    //     // tslint:disable-next-line:no-shadowed-variable
-    //     const passwordDigest = await argon2.hash(credentials.password);
+async function createUserAndSession(res: Response, credentials) {
 
-    //     const user = db.createUser(credentials.email, passwordDigest);
+    const passwordDigest = await argon2.hash(credentials.password);
 
-    //     const sessionToken = 1;
+    const user = db.createUser(credentials.email, passwordDigest);
 
-    //     res.cookie('SESSIONID', sessionToken, {httpOnly: true, secure: true});
+    const sessionId = await randomBytes(32).toString('hex'); // TODO: Check it!
 
-    //     res.status(200).json({id: user.id, email: user.email});
+    console.log('sessionId: ', sessionId);
 
-    // }
+    sessionStore.createSession(sessionId, user);
 
+    res.cookie('SESSIONID', sessionId);
 
+    // res.cookie('SESSIONID', sessionToken, { httpOnly: true, secure: true });
+
+    res.status(200).json({ id: user.id, email: user.email });
 
 }
