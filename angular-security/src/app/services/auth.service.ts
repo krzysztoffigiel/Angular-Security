@@ -25,10 +25,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     console.log('Hello Auth Service')
-    http.get<User>('/api/user').subscribe(user => {
-      console.log('User: ', user);
-      this.subject.next(user ? user : ANONYMOUS_USER)
-    }, err => {
+    http.get<User>('/api/user').subscribe(user => this.subject.next(user ? user : ANONYMOUS_USER), err => {
       console.error('Cannot resolve path /api/user: ', err)
     });
   }
