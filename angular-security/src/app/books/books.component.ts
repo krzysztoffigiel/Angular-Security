@@ -1,3 +1,4 @@
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from './../services/auth.service';
 import { of as observableOf, Observable } from 'rxjs';
 import { BooksService } from './../services/books.service';
@@ -14,8 +15,10 @@ export class BooksComponent implements OnInit {
 
   books$: Observable<Books[]>;
   isLoggedIn$: Observable<boolean>;
+  htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
 
-  constructor(private booksService: BooksService, private authService: AuthService) { }
+  constructor(private booksService: BooksService, private authService: AuthService, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
     console.log('Hello Books Component')

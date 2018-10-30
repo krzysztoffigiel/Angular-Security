@@ -21,6 +21,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 
 import { AuthService } from './services/auth.service';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     BooksComponent,
     SignupComponent,
+    SafePipe,
 
   ],
   imports: [

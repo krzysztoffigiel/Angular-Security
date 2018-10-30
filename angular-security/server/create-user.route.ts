@@ -20,7 +20,7 @@ export function createUser(req: Request, res: Response) {
             res.status(400).json({ errors });
         } else {
             createUserAndSession(res, credentials).catch((err) => {
-                console.log('An error occured while new user creating', err);
+                console.error('An error occured while new user creating', err);
                 res.sendStatus(500);
             });
         }

@@ -1,25 +1,33 @@
 <div class="container py-5" *ngIf="isLoggedIn$ | async">
     <div class="row">
         <div class="col col-12">
-            <!-- <div class="books-list-container"> -->
-                <table class="table card card-strong">
-                    <thead>
-                        <tr>
-                            <th style="width: 1%">#</th>
-                            <th style="width: 69%">Book name</th>
-                            <th style="width: 5%">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let book of books$ | async" [routerLink]="['/books', book.id]">
-                            <th >{{book.id}}</th>
-                            <td class="book-description"><i>{{book.description}}</i></td>
-                            <td class="book-price">{{book.price}}$</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <!-- </div> -->
+            <table class="table card card-strong">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">#</th>
+                        <th style="width: 69%">Book name</th>
+                        <th style="width: 5%">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books$ | async" [routerLink]="['/books', book.id]">
+                        <th>{{book.id}}</th>
+                        <td class="book-description"><i>{{book.description}}</i></td>
+                        <td class="book-price">{{book.price}}$</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
+<div class="container py-5">
+    <h1>Sanitization example</h1>
+    <p>Bound value:</p>
+    <p class="e2e-inner-html-interpolated">{{htmlSnippet}}</p>
+    <p>Result of binding to innerHTML:</p>
+    <p class="e2e-inner-html-bound" [innerHTML]="htmlSnippet | safe: 'script'"></p>
+    <span>
+        // Html script tags removed! Angular automatically recognizes unsafe html elements like script tag but keeps safe content
+        like b tag.
+    </span>
+</div>
