@@ -20,12 +20,12 @@
         </div>
     </div>
 </div>
-<div class="container py-5">
+<div class="container py-5" *ngIf="isLoggedOut$ | async">
     <h1>Sanitization example</h1>
     <p>Bound value:</p>
     <p class="e2e-inner-html-interpolated">{{htmlSnippet}}</p>
     <p>Result of binding to innerHTML:</p>
-    <p class="e2e-inner-html-bound" [innerHTML]="htmlSnippet | safe: 'script'"></p>
+    <p class="e2e-inner-html-bound" [innerHTML]="htmlSnippet | safe: 'html'"></p>
     <span>
         // Html script tags removed! Angular automatically recognizes unsafe html elements like script tag but keeps safe content
         like b tag.

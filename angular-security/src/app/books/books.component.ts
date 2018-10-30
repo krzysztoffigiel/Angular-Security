@@ -15,6 +15,7 @@ export class BooksComponent implements OnInit {
 
   books$: Observable<Books[]>;
   isLoggedIn$: Observable<boolean>;
+  isLoggedOut$: Observable<boolean>;
   htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
 
   constructor(private booksService: BooksService, private authService: AuthService, private sanitizer: DomSanitizer) {
@@ -24,6 +25,7 @@ export class BooksComponent implements OnInit {
     console.log('Hello Books Component')
     this.books$ = this.booksService.loadAllBooks().pipe(catchError(err => observableOf([])));
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.isLoggedOut$ = this.authService.isLoggedOut$;
     console.log('isLoggedIn from BooksComponent: ', this.isLoggedIn$)
   }
 
