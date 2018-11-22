@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { routesConfig } from './routes.config';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { BooksComponent } from './books/books.component';
 import { SignupComponent } from './signup/signup.component';
@@ -44,7 +44,8 @@ import { SafePipe } from './safe.pipe';
     MatMenuModule,
     MatIconModule,
     NgbModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [BooksService, AuthService],
   bootstrap: [AppComponent]

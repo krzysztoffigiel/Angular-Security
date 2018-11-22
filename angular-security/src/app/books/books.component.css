@@ -5,4 +5,31 @@ td {
 .book-description {
     white-space: normal !important;
 }
+.sanitization-header {
+    color: aquamarine;
+    border-left: 3px solid white;
+    padding-left: 10px;
+}
+.sanitization-text {
+    color: white;
+}
+.sanitization-textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 4px solid aquamarine;
+}
+textarea:focus { 
+    outline: none !important;
+    border-color: transparent;
+    box-shadow: 0 0 10px aquamarine !important;
+}
+.btn {
+    float: right;
+    background-color: aquamarine;
+    border: 2px solid white;
+}
+/* .btn:hover {
+    border: 2px solid white;
+    color: white;
+} */
 

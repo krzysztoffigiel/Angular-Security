@@ -1,0 +1,86 @@
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\contentsline {chapter}{\chapternumberline {1}Wst\IeC {\k e}p}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Wprowadzenie}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Cel projektu}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}R\IeC {\'o}\IeC {\.z}nice pomi\IeC {\k e}dzy istniej\IeC {\k a}cymi aplikacjami}{1}{section.1.3}
+\contentsline {section}{\numberline {1.4}Struktura pracy (ToDo)}{1}{section.1.4}
+\contentsline {chapter}{\chapternumberline {2}Technologie}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Wprowadzenie}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Technologie}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Framework Angular 6}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}TypeScript 3}{3}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}HTML5}{3}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}CSS3}{4}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Bootstrap 4}{4}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}NodeJS 8}{4}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}Express.js}{4}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Karma}{5}{subsection.2.2.8}
+\contentsline {subsection}{\numberline {2.2.9}Jasmine}{5}{subsection.2.2.9}
+\contentsline {subsection}{\numberline {2.2.10}Apache Cordova}{5}{subsection.2.2.10}
+\contentsline {subsection}{\numberline {2.2.11}LaTeX}{5}{subsection.2.2.11}
+\contentsline {subsection}{\numberline {2.2.12}PBKDF2}{5}{subsection.2.2.12}
+\contentsline {subsection}{\numberline {2.2.13}Argon2}{5}{subsection.2.2.13}
+\contentsline {section}{\numberline {2.3}Narz\IeC {\k e}dzia}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Visual Studio Code 1.28}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}github.com}{6}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Auth0}{6}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}TexStudio}{6}{subsection.2.3.4}
+\contentsline {chapter}{\chapternumberline {3}Node.js}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Wprowadzenie}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Implementacja aplikacji serwerowej}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Inicjalizacja serwera}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Implementacja modu\IeC {\l }u rejestracji nowego u\IeC {\.z}ytkownika}{9}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Implementacja modu\IeC {\l }u logowania u\IeC {\.z}ytkownika}{10}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Implementacja modu\IeC {\l }u wylogowywania u\IeC {\.z}ytkownika}{10}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Implementacja mechanizm\IeC {\'o}w podtrzymywania sesji u\IeC {\.z}ytkownika}{10}{subsection.3.2.5}
+\contentsline {chapter}{\chapternumberline {4}Mechanizmy bezpiecze\IeC {\'n}stwa aplikacji internetowych opartych na j\IeC {\k e}zyku JavaScript}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Wprowadzenie}{11}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Komunikacja klient-serwer przy u\IeC {\.z}yciu protoko\IeC {\l }u HTTPS}{11}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Zasady tworzenia hase\IeC {\l } u\IeC {\.z}ytkownik\IeC {\'o}w}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Spos\IeC {\'o}b przechowywania hase\IeC {\l } u\IeC {\.z}ytkownik\IeC {\'o}w}{13}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Mechanizmy podtrzymywania sesji u\IeC {\.z}ytkownika}{15}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}JSON Web Tokens}{15}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Metody ochrony aplikacji internetowych przed atakami typu CSRF}{15}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}Metody ochrony aplikacji internetowych przed atakami typu XSS}{15}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Metody ochrony aplikacji internetowych przed atakami typu CSS}{15}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Walidacja formularzy}{15}{subsection.4.1.9}
+\contentsline {subsection}{\numberline {4.1.10}Autoryzacja oparta na rolach u\IeC {\.z}ytkownik\IeC {\'o}w (RBAC)}{15}{subsection.4.1.10}
+\contentsline {subsection}{\numberline {4.1.11}Testy aplikacji internetowych z u\IeC {\.z}yciem framework\IeC {\'o}w Jasmine oraz Karma}{15}{subsection.4.1.11}
+\contentsline {chapter}{\chapternumberline {5}Baza danych}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}Opis tabeli bazy danych}{17}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Person}{17}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Medical Data}{17}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Glucometer}{18}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Medical Data has Tablets}{18}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Tablets}{18}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Medical Data has Insulin}{18}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Diabetes Type}{18}{subsection.5.1.7}
+\contentsline {subsection}{\numberline {5.1.8}Insulin}{19}{subsection.5.1.8}
+\contentsline {subsection}{\numberline {5.1.9}Measurement}{19}{subsection.5.1.9}
+\contentsline {subsection}{\numberline {5.1.10}Measurement has Insulin}{19}{subsection.5.1.10}
+\contentsline {subsection}{\numberline {5.1.11}Glycemia Ranges}{19}{subsection.5.1.11}
+\contentsline {subsection}{\numberline {5.1.12}Products}{19}{subsection.5.1.12}
+\contentsline {section}{\numberline {5.2}Model bazy danych}{20}{section.5.2}
+\contentsline {chapter}{\chapternumberline {6}Panel administratora}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}Logowanie do panelu administratora}{23}{section.6.1}
+\contentsline {section}{\numberline {6.2}U\IeC {\.z}ytkowanie panelu administratora}{24}{section.6.2}
+\contentsline {chapter}{\chapternumberline {7}Panel u\IeC {\.z}ytkownika zarejestrowanego}{27}{chapter.7}
+\contentsline {section}{\numberline {7.1}Logowanie do panelu u\IeC {\.z}ytkownika}{27}{section.7.1}
+\contentsline {section}{\numberline {7.2}U\IeC {\.z}ytkowanie panelu u\IeC {\.z}ytkownika zarejestrowanego}{27}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Twoja glikemia}{27}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Dodaj pomiar}{31}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Kalkulatory}{31}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Tw\IeC {\'o}j profil}{33}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}Ustawienia profilu}{35}{subsection.7.2.5}
+\contentsline {chapter}{\chapternumberline {8}Panel u\IeC {\.z}ytkownika niezarejestrowanego oraz niezalogowanego}{37}{chapter.8}
+\contentsline {section}{\numberline {8.1}Okno rejestracji u\IeC {\.z}ytkownika}{37}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Rejestracja przy u\IeC {\.z}yciu konta \textit {Google}}{37}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Rejestracja tradycyjna -- podanie adreu e-mail oraz has\IeC {\l }a}{38}{subsection.8.1.2}
+\contentsline {chapter}{\chapternumberline {9}Bezpiecze\IeC {\'n}stwo aplikacji}{41}{chapter.9}
+\contentsline {chapter}{\chapternumberline {10}Testy}{43}{chapter.10}
+\contentsline {section}{\numberline {10.1}Debugowanie aplikacji i dost\IeC {\k e}p do informacji o jej dzia\IeC {\l }aniu}{43}{section.10.1}
+\contentsline {section}{\numberline {10.2}Testy funkcjonalne aplikacji}{44}{section.10.2}
+\contentsline {chapter}{\chapternumberline {11}Zako\IeC {\'n}czenie}{47}{chapter.11}
+\contentsline {chapter}{Literatura}{49}{chapter*.3}
+\contentsline {appendix}{\chapternumberline {A}Za\IeC {\l }\IeC {\k a}czniki}{51}{appendix.A}

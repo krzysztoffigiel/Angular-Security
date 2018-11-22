@@ -1,0 +1,20 @@
+\select@language {polish}
+\select@language {polish}
+\contentsline {chapter}{\chapternumberline {1}Wst\IeC {\k e}p}{1}{chapter.1}
+\contentsline {chapter}{\chapternumberline {2}Podstawy teoretyczne}{2}{chapter.2}
+\contentsline {chapter}{\chapternumberline {3}Rozwini\IeC {\k e}cie}{3}{chapter.3}
+\contentsline {chapter}{\chapternumberline {4}Zako\IeC {\'n}czenie}{4}{chapter.4}
+\contentsline {appendix}{\chapternumberline {A}Par\IeC {\k e} s\IeC {\l }\IeC {\'o}w o stylu \texttt {ppfcmthesis}}{5}{appendix.A}
+\contentsline {section}{\numberline {A.1}R\IeC {\'o}\IeC {\.z}nice w stosunku do ,,oficjalnych'' zasad sk\IeC {\l }adu ze stron FCMu}{5}{section.A.1}
+\contentsline {appendix}{\chapternumberline {B}Sk\IeC {\l }adanie dokumentu w systemie \LaTeX }{6}{appendix.B}
+\contentsline {section}{\numberline {B.1}Narz\IeC {\k e}dzia}{6}{section.B.1}
+\contentsline {section}{\numberline {B.2}Edycja tekstu}{6}{section.B.2}
+\contentsline {subsection}{\numberline {B.2.1}Struktura dokumentu}{6}{subsection.B.2.1}
+\contentsline {subsection}{\numberline {B.2.2}Akapity i znaki specjalne}{6}{subsection.B.2.2}
+\contentsline {subsection}{\numberline {B.2.3}Wypunktowania}{7}{subsection.B.2.3}
+\contentsline {subsection}{\numberline {B.2.4}Polecenia pakietu \texttt {ppfcmthesis}}{7}{subsection.B.2.4}
+\contentsline {paragraph}{Makra zdefiniowane dla j\IeC {\k e}zyka angielskiego.}{7}{section*.2}
+\contentsline {paragraph}{Makra zdefiniowane dla j\IeC {\k e}zyka polskiego.}{7}{section*.3}
+\contentsline {subsection}{\numberline {B.2.5}Rysunki}{7}{subsection.B.2.5}
+\contentsline {subsection}{\numberline {B.2.6}Tablice}{8}{subsection.B.2.6}
+\contentsline {section}{\numberline {B.3}Literatura i materia\IeC {\l }y dodatkowe}{9}{section.B.3}
