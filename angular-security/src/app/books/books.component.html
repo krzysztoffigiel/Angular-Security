@@ -20,19 +20,19 @@
         </div>
     </div>
 </div>
-<div class="container py-5" *ngIf="isLoggedOut$ | async">
+<div class="container py-5">
     <h1 class="sanitization-header">Sanitization example</h1>
     <p class="sanitization-text">Bound value:</p>
     <p class="e2e-inner-html-interpolated"><i>{{htmlSnippet}}</i></p>
     <p class="sanitization-text">Result of binding to innerHTML:</p>
-    <p class="e2e-inner-html-bound" [innerHTML]="htmlSnippet | safe: 'html'"></p>
+    <p class="e2e-inner-html-bound" [innerHTML]="htmlSnippet"></p>
     <span>
         <i>// Html script tags removed! Angular automatically recognizes unsafe html elements like script tag but keeps
             safe content
             like b tag.</i>
     </span>
 
-    <p class="sanitization-text">Try it out!</p>
+    <!-- <p class="sanitization-text">Try it out!</p>
 
     <form [formGroup]="sanitizationForm" (ngSubmit)="onFormSubmit()">
         <div class="form-group">
@@ -40,10 +40,10 @@
             <textarea formControlName="textAreaContent" [innerHTML]="textAreaContent" class="sanitization-textarea" id="exampleFormControlTextarea1"
                 rows="3"></textarea>
         </div>
-        <!-- TODO: submit form on btn click -->
+        
         <div class="form-group">
             <button [disabled]="!sanitizationForm.valid" type="submit" class="btn">Send</button>
         </div>
-    </form>
+    </form> -->
 
 </div>

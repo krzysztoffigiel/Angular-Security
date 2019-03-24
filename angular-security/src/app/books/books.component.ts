@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   books$: Observable<Books[]>;
   isLoggedIn$: Observable<boolean>;
-  isLoggedOut$: Observable<boolean>;
+  // isLoggedOut$: Observable<boolean>;
   htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
   htmlSnippet2 = '<a href="&#x3000;javascript:alert(1)">CLICKME</a>';
 
@@ -28,12 +28,14 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     console.log('Hello Books Component')
-    this.books$ = this.booksService.loadAllBooks().pipe(catchError(err => observableOf([])));
+    this.books$ = this.booksService.loadAllBooks().pipe(catchError((err) => 
+      observableOf([]))
+    );
     this.isLoggedIn$ = this.authService.isLoggedIn$;
-    this.isLoggedOut$ = this.authService.isLoggedOut$;
+    // this.isLoggedOut$ = this.authService.isLoggedOut$;
 
     this.sanitizationForm = this.formBuilder.group({
-      textAreaContent: ['', Validators.required ],
+      textAreaContent: ['', Validators.required],
     });
 
   }

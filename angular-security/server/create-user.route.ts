@@ -5,6 +5,7 @@ import * as argon2 from 'argon2';
 import { validatePassword } from './password-validation';
 import { randomBytes } from 'crypto';
 import { sessionStore } from './session.store';
+import { createSessionToken } from './security.utils';
 
 export function createUser(req: Request, res: Response) {
 
@@ -15,16 +16,12 @@ export function createUser(req: Request, res: Response) {
     if (errors.length > 0) {
         res.status(400).json({ errors });
     } else {
-
-        if (errors.length > 0) {
-            res.status(400).json({ errors });
-        } else {
-            createUserAndSession(res, credentials).catch((err) => {
-                console.error('An error occured while new user creating', err);
-                res.sendStatus(500);
-            });
-        }
+        createUserAndSession(res, credentials).catch((err) => {
+            console.error(`An error occured while new user creating: ${err}`);
+            res.sendStatus(500);
+        });
     }
+
 }
 
 async function createUserAndSession(res: Response, credentials) {
@@ -33,15 +30,17 @@ async function createUserAndSession(res: Response, credentials) {
 
     const user = db.createUser(credentials.email, passwordDigest);
 
-    const sessionId = await randomBytes(32).toString('hex'); // TODO: Check it!
+    const sessionToken = await createSessionToken(user);
 
-    console.log('sessionId: ', sessionId);
+    // const sessionId = await randomBytes(32).toString('hex'); 
 
-    sessionStore.createSession(sessionId, user);
+    // console.log('sessionId: ', sessionId);
 
-    res.cookie('SESSIONID', sessionId, {httpOnly: true, secure: true});
+    // sessionStore.createSession(sessionId, user);
 
-    // res.cookie('SESSIONID', sessionToken, { httpOnly: true, secure: true });
+    // res.cookie('SESSIONID', sessionId, { httpOnly: true, secure: true });
+
+    res.cookie('SESSIONID', sessionToken, { httpOnly: true, secure: true });
 
     res.status(200).json({ id: user.id, email: user.email });
 

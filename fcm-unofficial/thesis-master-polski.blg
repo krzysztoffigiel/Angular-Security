@@ -3,49 +3,53 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis-master-polski.aux
 The style file: plalpha.bst
 Database file #1: bibliography.bib
+Repeated entry---line 201 of file bibliography.bib
+ : @misc{Node
+ :           ,
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in Vsc
 Warning--to sort, need author or key in Auth
 Warning--to sort, need author or key in Ans
 Warning--to sort, need author or key in Ang
-You've used 5 entries,
+You've used 11 entries,
             2554 wiz_defined-function locations,
-            602 strings with 5220 characters,
-and the built_in function-call counts, 1136 in all, are:
-= -- 108
-> -- 12
-< -- 1
-+ -- 2
-- -- 2
-* -- 56
-:= -- 148
-add.period$ -- 11
-call.type$ -- 5
-change.case$ -- 20
-chr.to.int$ -- 5
-cite$ -- 13
-duplicate$ -- 56
-empty$ -- 134
-format.name$ -- 4
-if$ -- 258
+            638 strings with 5756 characters,
+and the built_in function-call counts, 2770 in all, are:
+= -- 252
+> -- 60
+< -- 7
++ -- 14
+- -- 14
+* -- 140
+:= -- 428
+add.period$ -- 29
+call.type$ -- 11
+change.case$ -- 44
+chr.to.int$ -- 11
+cite$ -- 19
+duplicate$ -- 152
+empty$ -- 284
+format.name$ -- 27
+if$ -- 594
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 24
-num.names$ -- 3
-pop$ -- 48
+missing$ -- 14
+newline$ -- 54
+num.names$ -- 21
+pop$ -- 95
 preamble$ -- 1
-purify$ -- 26
+purify$ -- 62
 quote$ -- 0
-skip$ -- 50
+skip$ -- 109
 stack$ -- 0
-substring$ -- 39
-swap$ -- 5
-text.length$ -- 1
-text.prefix$ -- 1
+substring$ -- 81
+swap$ -- 11
+text.length$ -- 7
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 36
+type$ -- 60
 warning$ -- 4
-while$ -- 2
-width$ -- 7
-write$ -- 51
-(There were 4 warnings)
+while$ -- 14
+width$ -- 15
+write$ -- 129
+(There was 1 error message)

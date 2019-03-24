@@ -1,15 +1,17 @@
 import { db } from "./database";
-import { sessionStore } from "./session.store";
 
 export function readAllBooks(req, res) {
 
-    const sessionId = req.cookies['SESSIONID'];
+    console.log(`Pobieram ksiazki...`)
 
-    const isSessionValid = sessionStore.isSessionValid(sessionId);
+    // const sessionId = req.cookies['SESSIONID'];
 
-    if(!isSessionValid) {
-        res.sendStatus(403); 
-    } else {
+    // const isSessionValid = sessionStore.isSessionValid(sessionId);
+
+    // if(!isSessionValid) {
+    //     res.sendStatus(403); 
+    // } else {
+        console.log(`All books: ${db.readAllBooks()}`)
         res.status(200).json({books: db.readAllBooks()});
-    }
+    // }
 }

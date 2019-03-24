@@ -1,4 +1,4 @@
-\begin{thebibliography}{Fra15}
+\begin{thebibliography}{Aug15}
 
 \bibitem[Ang]{Ang}
 {Angular - Reactive Forms guide}.
@@ -8,15 +8,46 @@
 {Angular - Setup for local development guide}.
 \newblock [on-line 13.08.2017] \url{https://angular.io/guide/setup}.
 
+\bibitem[Aug15]{Express}
+Ben Augarten.
+\newblock {\em Express.js Blueprints}.
+\newblock Packt Publishing Ltd., Birmingham, B3 2PB, UK, 2015.
+
 \bibitem[Aut]{Auth}
 {Auth0 documentation}.
 \newblock [on-line 01.10.2017]
   \url{https://auth0.com/docs/quickstart/spa/angular2}.
 
-\bibitem[Fra15]{Css}
-Ben Frain.
-\newblock {\em Responsive Web Design with HTML5 and CSS3 --- Second Edition}.
-\newblock Packt Publishing Ltd., Birmingham, 35 Livery Street B3 2PB, UK, 2015.
+\bibitem[BJ16]{Bootstrap}
+Jason~Marah Benjamin~Jakobus.
+\newblock {\em Mastering Bootstrap 4}.
+\newblock Packt Publishing Ltd., Birmingham, 35 Livery Street, UK, 2016.
+
+\bibitem[Car17]{Html}
+Patrick Carey.
+\newblock {\em New Perspectives on HTML5 and CSS3, 7th Edition}.
+\newblock Cengage Learning., Boston MA 02210, 20 Channel Street B3 2PB, USA,
+  2017.
+
+\bibitem[Dog18]{Node}
+Fernando Doglio.
+\newblock {\em REST API Development with Node.js, 2nd Edition}.
+\newblock Apress Media LLC, La Paz, Canelones, Uruguay, 2018.
+
+\bibitem[Fen18]{TypeScript}
+Steve Fenton.
+\newblock {\em Pro TypeScript, 2nd Edition}.
+\newblock Apress Media LLC, Basingstoke, UK, 2018.
+
+\bibitem[Fre18]{Angular}
+Adam Freeman.
+\newblock {\em Pro Angular 6, 2nd Edition}.
+\newblock Apress Media LLC, London, UK, 2018.
+
+\bibitem[Gra18]{Css}
+Keith~J. Grant.
+\newblock {\em CSS in depth}.
+\newblock Manning Publications Co., Shelter Island, 20 Baldwin Road, NY, 2018.
 
 \bibitem[Vsc]{Vsc}
 {Visual Studio Code documentation}.

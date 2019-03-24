@@ -16,7 +16,11 @@ class InMemoryDatabase {
 
         const users = _.values(USERS);
 
-        return _.find(users, user => user.email === email);
+        const user = _.find(users, user => user.email === email);
+
+        console.log(`User: ${user}`);
+
+        return user;
 
     }
 

@@ -1,3 +1,4 @@
+import { DbUser } from './db-user';
 
 import moment = require("moment");
 const util = require('util');
@@ -7,16 +8,25 @@ import * as fs from "fs";
 
 export const randomBytes = util.promisify(crypto.randomBytes);
 
-// crypto.randomBytes(32, (err, num) => {
-//     console.log(num);
-// });
-
-// randomBytes(32).then((num) => {
-//     console.log(num);
-// }).catch(err => {console.error(err)});
+export const signJwt = util.promisify(jwt.sign);
 
 const RSA_PRIVATE_KEY = fs.readFileSync('./demos/private.key');
 
 const RSA_PUBLIC_KEY = fs.readFileSync('./demos/public.key');
 
-const SESSION_DURATION = 240;
+const SESSION_DURATION = 1000;
+
+export async function createSessionToken(user: DbUser) {
+    return signJwt({}, 
+        RSA_PRIVATE_KEY, {
+        algorithm: 'RS256',
+        expiresIn: 7200,
+        subject: user.id.toString()
+    });
+}
+
+export async function decodeJwt(token: string) {
+    const payload = await jwt.verify(token, RSA_PUBLIC_KEY);
+    console.log(`Decoded JWT payload: ${payload}`);
+    return payload;
+}
