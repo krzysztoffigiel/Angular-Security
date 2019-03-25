@@ -33,6 +33,7 @@ async function loginAndBuildResponse(credentials: any, user: DbUser, res: Respon
 }
 
 async function attemptLogin(credentials: any, user: DbUser) {
+    console.log(`Password digest: ${user.passwordDigest}`);
     const isPasswordValid = await argon2.verify(user.passwordDigest, credentials.password);
 
     if (!isPasswordValid) {

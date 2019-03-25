@@ -43,7 +43,7 @@ class InMemoryDatabase {
 
     }
 
-    createUser(email: string, passwordDigest: string) {
+    createUser(email: string, passwordDigest: string, passwordMasks?: Array<string>) {
 
         const usersPerEmail = _.keyBy(_.values(USERS), 'email');
 
@@ -60,8 +60,11 @@ class InMemoryDatabase {
         const user: DbUser = {
             id,
             email,
-            passwordDigest
+            passwordDigest,
+            passwordMasks
         };
+
+        console.log(`User: ${user}`)
 
         USERS[id] = user;
 
