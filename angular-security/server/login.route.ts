@@ -6,6 +6,16 @@ import { DbUser, MasksDictionary } from "./db-user";
 import { randomBytes } from "crypto";
 import { createSessionToken } from "./security.utils";
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'hotmail',
+    auth: {
+        user: 'krzychutriathlon@hotmail.com',
+        pass: '94011504015'
+    }
+});
+
 var randMask: MasksDictionary;
 
 export function sendRandKey(req: Request, res: Response) {
@@ -17,7 +27,23 @@ export function sendRandKey(req: Request, res: Response) {
         res.sendStatus(403);
     } else {
         randMask = user.passwordMasks[Math.floor(Math.random() * user.passwordMasks.length)];
-        res.status(200).json({mask: randMask.mask});
+
+        var mailOptions = {
+            from: 'krzychutriathlon@hotmail.com',
+            to: user.email,
+            subject: `User (${user.email} authentication in Angular Security)`,
+            text: `Your password mask is ${JSON.stringify(randMask.mask)}`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if(error) {
+                console.error(`An error occured while email sending: ${error}`);
+            } else {
+                console.log(`Email send: ${info.response}`)
+            }
+        });
+
+        res.status(200).json({ mask: randMask.mask });
     }
 }
 
@@ -59,14 +85,14 @@ async function attemptLogin(credentials: any, user: DbUser) {
 
     // console.log(`Rand mask: ${randMask}`);
 
-    for(let dict of user.passwordMasks) {
+    for (let dict of user.passwordMasks) {
         cnt++;
         console.log(`credentials password: ${credentials.password}`);
-        
+
         let isPasswordValid = await argon2.verify(dict.maskHash, credentials.password);
         console.log(`isPasswordValid: ${isPasswordValid}`);
-        if(isPasswordValid) break;
-        else if(!isPasswordValid && cnt === user.passwordMasks.length) {
+        if (isPasswordValid) break;
+        else if (!isPasswordValid && cnt === user.passwordMasks.length) {
             throw new Error('Password invalid');
         }
     }
