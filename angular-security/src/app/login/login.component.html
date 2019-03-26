@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                     <label for="email">
                                         <i class="fas fa-envelope"></i>&nbsp;e-mail:</label>
-                                    <input type="email" class="form-control  rounded-0" name="email"
+                                    <input [attr.disabled]="showLogin ? '' : null" type="email" class="form-control  rounded-0" name="email"
                                         formControlName="email">
                                     <div class="invalid-feedback">Oops, you missed this one.</div>
                                 </div>
@@ -39,7 +39,7 @@
                                 <button *ngIf="showLogin" class="btn login-btn btn-lg float-right" [disabled]="!loginForm.valid"
                                     type="submit" (click)="login()">
                                     <i class="fas fa-sign-in-alt"></i>&nbsp;Login</button>
-                                <button class="btn login-btn btn-lg float-right"
+                                <button *ngIf="!showLogin" class="btn login-btn btn-lg float-right"
                                     type="submit" (click)="generateMask()" style="margin-right: 10px;">
                                     <i class="fas fa-sign-in-alt"></i>&nbsp;Verify</button>
                             </form>
