@@ -3,7 +3,7 @@ import { User } from './../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay, tap, filter } from "rxjs/operators";
+import { map, shareReplay, tap, filter, share } from "rxjs/operators";
 
 
 export const ANONYMOUS_USER: User = {
@@ -45,6 +45,11 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post('/api/logout', null)
       .pipe(shareReplay(), tap(user => this.subject.next(ANONYMOUS_USER)));
+  }
+
+  generateMask(email: string): Observable<any> {
+    return this.http.post('/api/generateMask', { email })
+    .pipe(shareReplay(), tap(user => this.subject.next(user)));
   }
 
 }

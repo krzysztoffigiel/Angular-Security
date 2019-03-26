@@ -11,6 +11,7 @@ import { Router } from '../../../node_modules/@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  showLogin: boolean = false;
 
   messagePerErrorCode = {
     loginFailed: 'Invalid credentials'
@@ -23,6 +24,18 @@ export class LoginComponent implements OnInit {
       email: ['test@gmail.com', Validators.required],
       password: ['Password10', Validators.required]
     });
+  }
+
+  generateMask() {
+    const val = this.loginForm.value;
+    if(val.email) {
+      this.authService.generateMask(val.email).subscribe((response) => {
+        console.log(response);
+        this.showLogin = true;
+      }, err => {
+        console.error(`An error occured while mask generating: ${err}`);
+      });
+    }
   }
 
   login() {

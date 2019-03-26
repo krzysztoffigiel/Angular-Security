@@ -7,7 +7,7 @@ import { readAllBooks } from './read-all-books.route';
 import { createUser } from './create-user.route';
 import { getUser } from './get-user.route';
 import { logout } from './logout.route';
-import { login } from './login.route';
+import { login, sendRandKey } from './login.route';
 import { retrieveUserIdFromRequest } from './get-user.middleware';
 import { checkIfAuthenticated } from './authenitcation.middleware';
 const bodyParser = require('body-parser');
@@ -43,6 +43,9 @@ app.route('/api/logout')
 
 app.route('/api/login')
     .post(login);
+
+app.route('/api/generateMask') 
+    .post(sendRandKey);
 
 if (options.secure) {
 

@@ -1,4 +1,4 @@
-import { DbUser } from './db-user';
+import { DbUser, MasksDictionary } from './db-user';
 import * as _ from 'lodash';
 import { BOOKS, USERS } from "./database-data";
 
@@ -43,7 +43,9 @@ class InMemoryDatabase {
 
     }
 
-    createUser(email: string, passwordDigest: string, passwordMasks?: Array<string>) {
+    createUser(email: string, passwordDigest: string, passwordMasks?: Array<MasksDictionary>) {
+
+        // console.log(`DICT !!!!!!: ${JSON.stringify(passwordMasks)}`)
 
         const usersPerEmail = _.keyBy(_.values(USERS), 'email');
 
@@ -64,7 +66,7 @@ class InMemoryDatabase {
             passwordMasks
         };
 
-        console.log(`User: ${user}`)
+        // console.log(`User: ${JSON.stringify(user)}`);
 
         USERS[id] = user;
 

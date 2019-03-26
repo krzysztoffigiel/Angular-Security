@@ -6,6 +6,7 @@ import { validatePassword } from './password-validation';
 import { randomBytes } from 'crypto';
 import { sessionStore } from './session.store';
 import { createSessionToken } from './security.utils';
+import { MasksDictionary } from './db-user';
 
 export function createUser(req: Request, res: Response) {
 
@@ -36,15 +37,21 @@ async function createUserAndSession(res: Response, credentials) {
 
     var preparedMasks: Array<string> = await prepareMasks(passArr, credentials.password);
 
-    console.log(`Hash masks array: ${preparedMasks}`);
+    console.log(`Prepared masks array: ${preparedMasks}`);
 
     var preparedMasks: Array<string> = await hashMasks(preparedMasks);
 
-    console.log(`Final  hashed masks array: ${preparedMasks}`);
+    // console.log(`Final hashed masks array: ${preparedMasks}`);
+
+    var masksDictArray: Array<MasksDictionary> = await createMasksDictionary(passArr, preparedMasks);
+
+    // console.log(`DICTIONARY: ${JSON.stringify(masksDictArray)}`);
+
+    createMasksDictionary(passArr, preparedMasks);
 
     const passwordDigest = await argon2.hash(credentials.password);
 
-    const user = db.createUser(credentials.email, passwordDigest, preparedMasks);
+    const user = db.createUser(credentials.email, passwordDigest, masksDictArray);
 
     const sessionToken = await createSessionToken(user);
 
@@ -62,6 +69,7 @@ async function createUserAndSession(res: Response, credentials) {
 
 }
 
+// generowanie kodow
 async function generateRandomMasks() {
 
     var masksArray: Array<string> = [];
@@ -70,8 +78,8 @@ async function generateRandomMasks() {
 
         var mask: string = '';
 
-        while (mask.length !== 4) {
-            var randChar = (Math.floor(Math.random() * 10)).toString();
+        while (mask.length < 4) {
+            var randChar = (Math.floor(Math.random() * 9) + 1).toString();
             if (mask.indexOf(randChar) === -1) mask += randChar;
         }
 
@@ -83,6 +91,7 @@ async function generateRandomMasks() {
 
 }
 
+// generowanie hasel z kodow
 async function prepareMasks(masksArray: Array<string>, password: string) {
 
     var preparedPassArray: Array<string> = [];
@@ -92,7 +101,7 @@ async function prepareMasks(masksArray: Array<string>, password: string) {
         var preparedHash: string = '';
 
         for (let i = 0; i < element.length; i++) {
-            preparedHash += password.charAt(Number(element[i]));
+            preparedHash += password.charAt(Number(element[i]) - 1);
         }
 
         preparedPassArray.push(preparedHash);
@@ -105,11 +114,24 @@ async function prepareMasks(masksArray: Array<string>, password: string) {
 
 async function hashMasks(preparedMasksArray: Array<string>) {
 
-    var tempArray: Array<string> = [];
+    var hashMasksArray: Array<any> = [];
 
-    for(let prepMask of preparedMasksArray) {
-        tempArray.push(await argon2.hash(prepMask));        
+    for (let prepMask of preparedMasksArray) {
+        let hash = await argon2.hash(prepMask);
+        hashMasksArray.push(await argon2.hash(prepMask));
     }
 
-    return tempArray;
+    return hashMasksArray;
+}
+
+async function createMasksDictionary(masksArray: Array<string>, hashMasksArray: Array<string>) {
+
+    var masksDictArray: Array<any> = [];
+
+    for (let i = 0; i < masksArray.length; i++) {
+        masksDictArray.push(new MasksDictionary(masksArray[i], hashMasksArray[i]));
+    }
+
+    return masksDictArray;
+
 }
