@@ -32,7 +32,7 @@
                                 <div class="form-group" *ngIf="showLogin">
                                     <label for="password">
                                         <i class="fas fa-unlock-alt"></i>&nbsp;password:</label>
-                                    <input type="password" class="form-control  rounded-0" name="password"
+                                    <input type="password" [matKeyboard]="''" class="form-control  rounded-0" name="password"
                                         formControlName="password">
                                     <div class="invalid-feedback">Oops, you missed this one.</div>
                                 </div>

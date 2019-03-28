@@ -17,6 +17,7 @@ import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/mate
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksService } from './services/books.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatKeyboardModule } from '@ngx-material-keyboard/core';
 
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 
@@ -45,6 +46,7 @@ import { SafePipe } from './safe.pipe';
     MatIconModule,
     NgbModule,
     MatSnackBarModule,
+    MatKeyboardModule,
     FormsModule
   ],
   providers: [BooksService, AuthService],

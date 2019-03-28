@@ -19,6 +19,7 @@ var transporter = nodemailer.createTransport({
 var randMask: MasksDictionary;
 
 export function sendRandKey(req: Request, res: Response) {
+
     const userReq = req.body;
 
     const user = db.findUserByEmail(userReq.email);
@@ -26,18 +27,19 @@ export function sendRandKey(req: Request, res: Response) {
     if (!user) {
         res.sendStatus(403);
     } else {
+
         randMask = user.passwordMasks[Math.floor(Math.random() * user.passwordMasks.length)];
 
         var mailOptions = {
             from: 'krzychutriathlon@hotmail.com',
             to: user.email,
-            subject: `User (${user.email} authentication in Angular Security)`,
+            subject: `User (${user.email}) authentication in Angular Security.`,
             text: `Your password mask is ${JSON.stringify(randMask.mask)}`
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
             if(error) {
-                console.error(`An error occured while email sending: ${error}`);
+                console.error(`An error occured while email sending: ${JSON.stringify(error)}`);
             } else {
                 console.log(`Email send: ${info.response}`)
             }
