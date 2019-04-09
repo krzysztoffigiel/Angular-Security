@@ -30,3 +30,7 @@ export async function decodeJwt(token: string) {
     console.log(`Decoded JWT payload: ${payload}`);
     return payload;
 }
+
+export async function createCsrfToken() {
+    return randomBytes(32).then(bytes => bytes.toString('hex'));
+}

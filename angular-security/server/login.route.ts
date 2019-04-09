@@ -4,7 +4,7 @@ import { db } from "./database";
 import * as argon2 from 'argon2';
 import { DbUser, MasksDictionary } from "./db-user";
 import { randomBytes } from "crypto";
-import { createSessionToken } from "./security.utils";
+import { createSessionToken, createCsrfToken } from "./security.utils";
 
 var nodemailer = require('nodemailer');
 
@@ -66,8 +66,10 @@ export function login(req: Request, res: Response) {
 async function loginAndBuildResponse(credentials: any, user: DbUser, res: Response) {
     try {
         const sessionToken = await attemptLogin(credentials, user);
+        const csrfToken = await createCsrfToken();
         console.log("Login successfull");
         res.cookie("SESSIONID", sessionToken, { httpOnly: true, secure: true });
+        res.cookie('XSRF-token', csrfToken);
         res.status(200).json({ id: user.id, email: user.email });
     } catch (error) {
         console.log("Login failed");

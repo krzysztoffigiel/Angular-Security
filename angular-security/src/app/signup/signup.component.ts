@@ -44,8 +44,18 @@ export class SignupComponent implements OnInit {
           duration: 3000
         });
         console.log("User was created successfully");
-      },
-        response => this.errors = response.error.errors
+      }, (err) => {
+        if(err.status === 409) {
+          this.snackBar.open('User with assigned e-mail address already exists in database.', "Ok", {
+            duration: 6000
+          });
+        } else {
+          this.snackBar.open('Internal server error', "Ok", {
+            duration: 6000
+          });
+        }
+      }
+        // response => this.errors = response.error.errors
       );
 
     }

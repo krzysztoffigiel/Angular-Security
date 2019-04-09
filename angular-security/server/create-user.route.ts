@@ -5,7 +5,7 @@ import * as argon2 from 'argon2';
 import { validatePassword } from './password-validation';
 import { randomBytes } from 'crypto';
 import { sessionStore } from './session.store';
-import { createSessionToken } from './security.utils';
+import { createSessionToken, createCsrfToken } from './security.utils';
 import { MasksDictionary } from './db-user';
 
 export function createUser(req: Request, res: Response) {
@@ -19,7 +19,7 @@ export function createUser(req: Request, res: Response) {
     } else {
         createUserAndSession(res, credentials).catch((err) => {
             console.error(`An error occured while new user creating: ${err}`);
-            res.sendStatus(500);
+            res.sendStatus(409);
         });
     }
 
@@ -31,7 +31,7 @@ async function createUserAndSession(res: Response, credentials) {
 
     var passArr: Array<string> = [];
 
-    passArr = await generateRandomMasks();
+    passArr = await generateRandomMasks(20, 4);
 
     console.log(`Masks array: ${passArr}`);
 
@@ -55,6 +55,8 @@ async function createUserAndSession(res: Response, credentials) {
 
     const sessionToken = await createSessionToken(user);
 
+    const csrfToken = await createCsrfToken(); 
+
     // const sessionId = await randomBytes(32).toString('hex'); 
 
     // console.log('sessionId: ', sessionId);
@@ -65,20 +67,22 @@ async function createUserAndSession(res: Response, credentials) {
 
     res.cookie('SESSIONID', sessionToken, { httpOnly: true, secure: true });
 
+    res.cookie('XSRF-token', csrfToken);
+
     res.status(200).json({ id: user.id, email: user.email });
 
 }
 
 // generowanie kodow
-async function generateRandomMasks() {
+async function generateRandomMasks(count: number, length: number) {
 
     var masksArray: Array<string> = [];
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < count; i++) {
 
         var mask: string = '';
 
-        while (mask.length < 4) {
+        while (mask.length < length) {
             var randChar = (Math.floor(Math.random() * 9) + 1).toString();
             if (mask.indexOf(randChar) === -1) mask += randChar;
         }
@@ -135,3 +139,4 @@ async function createMasksDictionary(masksArray: Array<string>, hashMasksArray: 
     return masksDictArray;
 
 }
+

@@ -1,0 +1,11 @@
+
+Good morning,
+
+    I have special message for You. 
+    
+    Please, click below link and wait for results.
+
+    Click this link -> http://localhost:8080/csrf/csrf-page.html
+
+Enjoy!
+
