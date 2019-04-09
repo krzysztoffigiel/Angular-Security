@@ -66,7 +66,7 @@ export function login(req: Request, res: Response) {
 async function loginAndBuildResponse(credentials: any, user: DbUser, res: Response) {
     try {
         const sessionToken = await attemptLogin(credentials, user);
-        const csrfToken = await createCsrfToken();
+        const csrfToken = await createCsrfToken(sessionToken);
         console.log("Login successfull");
         res.cookie("SESSIONID", sessionToken, { httpOnly: true, secure: true });
         res.cookie('XSRF-token', csrfToken);

@@ -10,6 +10,7 @@ import { logout } from './logout.route';
 import { login, sendRandKey } from './login.route';
 import { retrieveUserIdFromRequest } from './get-user.middleware';
 import { checkIfAuthenticated } from './authenitcation.middleware';
+import { checkCsrfToken } from './csrf.middleware';
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
@@ -39,7 +40,7 @@ app.route('/api/user')
     .get(getUser);
 
 app.route('/api/logout')
-    .post(logout);
+    .post(checkIfAuthenticated, checkCsrfToken, logout);
 
 app.route('/api/login')
     .post(login);

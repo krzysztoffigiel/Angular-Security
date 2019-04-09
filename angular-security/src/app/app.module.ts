@@ -2,7 +2,7 @@
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -36,6 +36,10 @@ import { SafePipe } from './safe.pipe';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-token',
+      headerName: 'x-xsrf-token'
+    }),
     RouterModule.forRoot(routesConfig),
     ReactiveFormsModule,
     BrowserAnimationsModule,

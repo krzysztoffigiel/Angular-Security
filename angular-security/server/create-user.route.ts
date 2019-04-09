@@ -55,7 +55,7 @@ async function createUserAndSession(res: Response, credentials) {
 
     const sessionToken = await createSessionToken(user);
 
-    const csrfToken = await createCsrfToken(); 
+    const csrfToken = await createCsrfToken(sessionToken); 
 
     // const sessionId = await randomBytes(32).toString('hex'); 
 
